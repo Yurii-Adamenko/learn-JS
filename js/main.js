@@ -2,60 +2,43 @@
 console.log('1)');
 
 
-var counter = (function(){
-  var count = 0;
-  return function(num){
-    count = num !== undefined ? num : count;
-    return count++;
-  }
-}());
+var myStrings = ['Lorem ipsum', 'Blanditiis, eaque', 'Iure, quis', 'Iure, voluptatum', 'Maxime, veniam', 'Inventore, a', 'Eius, qui', 'Accusantium, amet', 'Nemo, eos', 'Vero, quos'];
 
-console.log(counter());
-console.log(counter());
-console.log(counter());
-console.log(counter(10));
-console.log(counter());
-console.log(counter());
+var myStringsWithO = myStrings.filter(function(string) {
+  if (string.indexOf('o') > -1)
+  {
+    return this;
+  }
+});
+
+console.log(myStringsWithO);
 
 // пункт 2
 console.log('2)');
+console.log('a.');
 
+var d = new Date();
 
-var greet = function(){
-  return 'Hi! My name is ' + this.name + '. I am ' + this.age;
-}
+console.log('1 вариaнт:');
 
-var firstPerson = {
-  name: 'John',
-  age: 21,
-  greet: greet
-}
+var dateString = (d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2) + ', ' + ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2));
 
-var secondPerson = {
-  name: 'Bob',
-  age: 27,
-  greet: greet
-}
+console.log(dateString);
 
-console.log(firstPerson.greet());
-console.log(secondPerson.greet());
+console.log('2 вариaнт:');
 
-// пункт 3
-console.log('3)');
+var dateString2 = dateFormat(d, "yyyy-mm-dd, HH:MM");
 
+console.log(dateString2);
 
-var thirdPerson = {
-  name: 'Tom',
-  age: 32,
-  _weight: 90,
-  get weight(){
-    return this._weight;
-  },
-  set weight(value){
-    this._weight = value;
-  },
-  greet: greet
-}
+console.log('b.');
 
-console.log(thirdPerson.weight);
-console.log(thirdPerson);
+console.log('1 вариaнт:');
+
+console.log(d.toLocaleString());
+
+console.log('2 вариaнт:');
+
+var dateString3 = dateFormat(d, "dd.mm.yyyy, HH:MM:ss");
+
+console.log(dateString3);
